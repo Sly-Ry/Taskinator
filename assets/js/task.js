@@ -24,12 +24,15 @@ var taskFormHandler = function(event) {
 
     // send it as an argument to createTaskEl
     createTaskEl(taskDataObj);
-}
+};
 
 var createTaskEl = function(taskDataObj) {
     // create list item
     var listItemEl = document.createElement("li");
     listItemEl.className = "task-item";
+
+    //add task id as a custom attribute
+    listItemEl.setAttribute("data-task-id", taskIdCounter);
 
     // create div to hold task info and add to list item
     var taskInfoEl = document.createElement("div");
@@ -39,7 +42,10 @@ var createTaskEl = function(taskDataObj) {
     
     // add entire list item to list
     tasksToDoEl.appendChild(listItemEl);
-}
+
+    // increase task counter for next unique id
+    taskIdCounter++;
+};
 
 formEl.addEventListener("submit", taskFormHandler);
 
